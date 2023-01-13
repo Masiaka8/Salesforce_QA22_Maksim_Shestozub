@@ -26,6 +26,7 @@ public class Lead {
     private final String annualRevenue;
     private final String street;
     private final String description;
+    private final String name;
 
     private Lead(LeadBuilder leadBuilder) {
         this.firstName = leadBuilder.firstName;
@@ -48,6 +49,7 @@ public class Lead {
         this.annualRevenue = leadBuilder.annualRevenue;
         this.street = leadBuilder.street;
         this.description = leadBuilder.description;
+        this.name = leadBuilder.name;
     }
 
 
@@ -79,7 +81,7 @@ public class Lead {
         return rating;
     }
 
-    public String getIndustry() {
+    public Industry getIndustry() {
         return industry;
     }
 
@@ -153,6 +155,7 @@ public class Lead {
         private String annualRevenue;
         private String street;
         private String description;
+        private String name;
 
         public LeadBuilder(String name, String company) {
             this.name = name;
@@ -260,7 +263,7 @@ public class Lead {
             return this;
         }
 
-        public  Lead build(){
+        public Lead build() {
             return new Lead(this);
         }
 
@@ -273,17 +276,18 @@ public class Lead {
         Lead lead = (Lead) o;
         return firstName.equals(lead.firstName) && lastName.equals(lead.lastName) && company.equals(lead.company) &&
                 phone.equals(lead.phone) && leadStatus == lead.leadStatus && salutation == lead.salutation &&
-                rating.equals(lead.rating) && industry.equals(lead.industry) && leadSource.equals(lead.leadSource) &&
-                email.equals(lead.email) && title.equals(lead.title) && website.equals(lead.website) && city.equals(lead.city) &&
-                state.equals(lead.state) && zipCode.equals(lead.zipCode) && country.equals(lead.country) &&
-                employees.equals(lead.employees) && annualRevenue.equals(lead.annualRevenue) && street.equals(lead.street) &&
-                description.equals(lead.description);
+                rating == lead.rating && industry == lead.industry && leadSource == lead.leadSource &&
+                email.equals(lead.email) && title.equals(lead.title) && website.equals(lead.website) &&
+                city.equals(lead.city) && state.equals(lead.state) && zipCode.equals(lead.zipCode) &&
+                country.equals(lead.country) && employees.equals(lead.employees) && annualRevenue.equals(lead.annualRevenue) &&
+                street.equals(lead.street) && description.equals(lead.description) && name.equals(lead.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, company, phone, leadStatus, salutation, rating, industry, leadSource,
-                email, title, website, city, state, zipCode, country, employees, annualRevenue, street, description);
+        return Objects.hash(firstName, lastName, company, phone, leadStatus, salutation, rating, industry,
+                leadSource, email, title, website, city, state, zipCode, country, employees, annualRevenue,
+                street, description, name);
     }
 
     @Override
@@ -309,6 +313,9 @@ public class Lead {
                 ", annualRevenue='" + annualRevenue + '\'' +
                 ", street='" + street + '\'' +
                 ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
+
+
 }
